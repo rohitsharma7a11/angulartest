@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div >
+        <a routerLink="">
+            <button class="btn btn-warning"> Dashboard</button>
+        </a>
+    </div>
+    <div class="py-3">
+    <h3>Add New Document</h3>
+    </div>
+    <form [formGroup]="uploadDoc" (ngSubmit)="create()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Document Name </label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+          <span *ngIf="f.name?.errors?.['required'] && f.name?.touched" style="color: red;">
+            Name is required
+        </span>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="file" class="form-control" id="exampleInputPassword1" (change)="onFileChange($event)" formControlName="img">
+          
+          
+        <span *ngIf="f.img?.errors?.['incorrect'] && f.img?.touched" style="color: red;">
+            image error <span style="background: #fff;">{{f.img.errors?.['incorrect']}}</span>
+         </span>
+        <span *ngIf="f.img?.errors?.['invalidSize'] && f.img?.touched" style="color: red;">
+            image error <span style="background: #fff;">{{f.img.errors?.['invalidSize']}}</span> 
+        </span>
+        </div>
+       
+        <button type="submit" class="btn btn-warning" [disabled]="uploadDoc.invalid">Submit</button>
+      </form>
+      <div class="row mt-5">
+        <img src="{{base64Image}}" alt="" width="500">
+      </div>
+</div>

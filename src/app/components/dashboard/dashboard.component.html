@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-6">
+            <div>
+                <a routerLink="document-upload">
+                    <button class="btn btn-warning"> Add new</button>
+                </a>
+            </div>
+            
+
+        </div>
+        <div class="col-6">
+            <div>
+                <button class="btn btn-warning" (click)='logout()'> log out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 mt-5 p-3" *ngFor="let data of pageData" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+            <div class="text-center">
+                <a routerLink="document-details/{{data.id}}">
+                    <div>
+                        <img src="{{data.img}}" alt="" width="360" height="360">
+
+                    </div>
+                    <div>
+                        <span>{{data.name}}</span>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
